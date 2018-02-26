@@ -15,4 +15,49 @@ To get started with development, follow the steps:
 Building is done using `webpack`.  
 `$ webpack build` will provide you with a built `dist/` folder.
 
+## API
+There is no actual API yet. This part will go over potential proposals.  
+
+###  Basic API
+#### Creating a World and Scenes
+
+    import {world, initialise} from 'fuvr'
+        
+    // Scene rendering a marker at a position
+    
+    const MyScene = scene(
+        initialState,
+        (state) => (
+            ['marker', {
+                x: state.marker.x,
+                y: state.marker.y,
+            }],
+            
+        )
+    )
+        
+    // Nest scenes for nested URLs
+    // parentscene/childscene1 -> first scene
+    // parentscene/childscene2 -> second scene
+    const ParentScene = scene(
+        ['childscene1', scene(...)],
+        ['childscene2', scene(...)],
+    )
+        
+    const Test = scene(
+        ...
+    )
+        
+    // Creating a world
+    // Map URLs/Paths to a scene
+    const MyWorld = world(
+        'My World',
+        ['myscene', MyScene],
+        ['parentscene', ParentScene],
+        ['test', Test],
+    )
+        
+    initialise(MyWorld)
+
+
 [flow]:[https://flow.org/en/docs/]
