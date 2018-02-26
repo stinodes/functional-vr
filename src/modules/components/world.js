@@ -14,7 +14,7 @@ import type {
   MemoryLocation,
   Action as MemoryAction
 } from 'history/createMemoryHistory'
-import type {ComponentInterface} from './types'
+import type {ComponentInterface} from '../tree/types'
 
 type History = BrowserHistory|HashHistory|MemoryHistory
 type Location = BrowserLocation|HashLocation|MemoryLocation

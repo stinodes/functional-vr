@@ -1,11 +1,8 @@
 // @flow
 import {world, World} from './world'
-import type {Node, TreeNode, RenderTree, Tag, TagMap, TreeInterface} from './types'
+import type {Node, TreeNode, RenderTree, Tag, TagMap, TreeInterface} from '../tree/types'
 
 const last = (arr: Array<any>) => arr[arr.length-1]
-const nodeByPath = (tree: RenderTree, path: Tag[]) => path.reduce((prev, tag) => {
-  return prev[tag]
-}, tree)
 
 const api = (tree: RenderTree, map: TagMap): TreeInterface => {
   return {

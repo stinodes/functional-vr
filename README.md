@@ -27,4 +27,4 @@ There is no actual API yet. This part will go over potential proposals.
 [flow]:https://flow.org/en/docs/
 [proposal-1]:proposals/proposal-1.md
 [proposal-2]:proposals/proposal-2.md
-[rendering]:src/modules/components/types.js
+[rendering]:src/modules/tree/types.js

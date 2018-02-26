@@ -47,7 +47,7 @@ export type Node = {
   parent: Tag,
   
   element: string,
-  attributes: {
+  props: {
     [string]: any
   },
   
