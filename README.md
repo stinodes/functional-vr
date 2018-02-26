@@ -21,6 +21,7 @@ There is no actual API yet. This part will go over potential proposals.
 ###  Basic API
 #### Creating a World and Scenes
 
+```javascript
     import {world, initialise} from 'fuvr'
         
     // Scene rendering a marker at a position
@@ -58,6 +59,7 @@ There is no actual API yet. This part will go over potential proposals.
     )
         
     initialise(MyWorld)
+```
 
 
 [flow]:[https://flow.org/en/docs/]
