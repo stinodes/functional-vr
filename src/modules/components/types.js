@@ -42,10 +42,11 @@
 
 export type Tag = string
 
-export type RenderElement = {
+export type Node = {
   tag: Tag,
   parent: Tag,
   
+  element: string,
   attributes: {
     [string]: any
   },
@@ -54,29 +55,29 @@ export type RenderElement = {
   
   ref: Element,
 }
-export type ShortRenderElement = {
-  tag: Tag,
-  parent: Tag,
-  children: Tag[],
+export type TreeNode = {
+  [Tag]: TreeNode,
 }
 
-export type TagDict = Map<Tag, RenderElement>
+export type TagMap = Map<Tag, Node>
 
 export type RenderTree = {
-  [Tag]: ShortRenderElement,
+  [Tag]: TreeNode,
 }
 
 export interface TreeInterface {
   tree: RenderTree,
-  findByTag(tag: Tag): ?RenderElement,
-  attach(element: RenderElement, to?: RenderElement): Tag,
-  detach(element: RenderElement): Tag,
+  map: TagMap,
+  generateTag(): Tag,
+  findByTag(tag: Tag): ?Node,
+  attach(node: Node, to?: Node|Tag): Tag,
+  detach(node: Node): void,
 }
 
 export interface ComponentInterface {
   __tag: Tag,
-  __mount(tree: TreeInterface): RenderElement, // should attach initially (no tag yet)
-  __update(tree: TreeInterface): RenderElement, // later attaches, has tag -> updates existing nodes `attach(element)`
-  __unmount(tree: TreeInterface): RenderElement, // detaches, has tag -> removes by tag `detach(element)
-  render(): RenderElement,
+  __mount(tree: TreeInterface): Node, // should attach initially (no tag yet)
+  __update(tree: TreeInterface): Node, // later attaches, has tag -> updates existing nodes `attach(element)`
+  __unmount(tree: TreeInterface): Node, // detaches, has tag -> removes by tag `detach(element)
+  render(): Node,
 }
