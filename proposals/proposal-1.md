@@ -38,8 +38,15 @@ const MyCustomEntity = entity(
         material: color('red'),
     })
   )
+/*
+  This component would render the following a-frame entity:
+      <a-entity 
+        geometry="primitive: box; height: 20; width: 20; depth: 20;"
+        material="color: red;"/>
+ */
   
 // Provide shorthand?
+// The following could output identical elements
 // Opt1 - might be confusing?
 const MyCustomEntity = entity({
     geometry: box({height: 20, width: 50, depth: 20,}),
