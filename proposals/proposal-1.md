@@ -41,7 +41,7 @@ const MyCustomEntity = entity(
   
 // Provide shorthand?
 // Opt1 - might be confusing?
-constMyCustomEntity = entity({
+const MyCustomEntity = entity({
     geometry: box({height: 20, width: 50, depth: 20,}),
     material: color('red'),
 })
