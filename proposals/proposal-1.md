@@ -57,7 +57,7 @@ type Scene = any
 const MyScene = scene(
   
   (state) => [
-    entity({
+    Entity({
       enter: state.action('enter'),
       leave: state.action('leave'),
     })
@@ -78,9 +78,9 @@ const MyScene = scene(
 #### Example using proposal
 
 ```javascript
-    import {world, scene, initialise} from 'fuvr'
+    import {world, scene, entity, initialise} from 'fuvr'
     
-    const Entity: any = {/*...*/}
+    const Entity: any = entity()
     const Marker: any = {/*...*/}
     const Navigation: any = {/*...*/}
         
