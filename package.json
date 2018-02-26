@@ -18,5 +18,8 @@
     "flow-bin": "^0.66.0",
     "jest": "^22.4.2",
     "webpack": "^4.0.0"
+  },
+  "dependencies": {
+    "history": "^4.7.2"
   }
 }
