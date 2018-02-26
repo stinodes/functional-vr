@@ -22,31 +22,59 @@ There is no actual API yet. This part will go over potential proposals.
 #### Creating a World and Scenes
 
 ```javascript
-    import {world, initialise} from 'fuvr'
+    import {world, scene, initialise} from 'fuvr'
+        
         
     // Scene rendering a marker at a position
-    
+    const initialState = {
+      marker: {x: 0, y: 0, z: 0, opacity: 0.5,},
+    }
     const MyScene = scene(
         initialState,
-        (state) => (
+        
+        (state) => [
             ['marker', {
+                enter: state.action('markerEnter'),
+                leave: state.action('markerLeave'),
+                // shorter: `...state.marker`
                 x: state.marker.x,
                 y: state.marker.y,
+                z: state.marker.z,
+                opacity: state.marker.opacity,
             }],
-            
-        )
+            // Allow navigation to different screens
+            ['navigation', {
+                to: '/parentscene/chidscene1',
+                x: 20,
+                y: 0,
+                z: 40,
+            }]
+        ],
+        
+        (state, action) => {
+          switch(action.type) {
+            // Set marker opacity to 1 on enter
+            case 'markerEnter':
+              return {...state, marker: {...state.marker, opacity: 1}}
+            // Set marker opacity to 0.5 on leave
+            case 'markerLeave':
+              return {...state, marker: {...state.marker, opacity: 0.5}}
+          }
+          // Return default
+          return state
+        }
     )
         
     // Nest scenes for nested URLs
     // parentscene/childscene1 -> first scene
     // parentscene/childscene2 -> second scene
     const ParentScene = scene(
-        ['childscene1', scene(...)],
-        ['childscene2', scene(...)],
+        ['childscene1', scene(/*...*/)],
+        ['childscene2', scene(/*...*/)],
     )
         
     const Test = scene(
-        ...
+        /*...*/
     )
         
     // Creating a world
