@@ -17,6 +17,40 @@ such as **markers**, **navigations**, ...
 
 ##### Exposed Functions:
 
+* **entity**: The most basic of primitives. Maps nearly perfectly to an A-Frame entity.
+```javascript
+import {entity, Entity} from 'fuvr'
+import {box} from 'fuvr/geometry'
+import {color} from 'fuvr/material'
+  
+type MyCustomEntityProps = {
+  color: string,
+}
+  
+type Props = {}
+type State = {}
+  
+// Define a new Entity-type that renders an entity with some props
+const MyCustomEntity = entity(
+  (properties: Props, state: State) => 
+    Entity({
+        geometry: box({height: 20, width: 50, depth: 20,}),
+        material: color('red'),
+    })
+  )
+  
+// Provide shorthand?
+// Opt1 - might be confusing?
+constMyCustomEntity = entity({
+    geometry: box({height: 20, width: 50, depth: 20,}),
+    material: color('red'),
+})
+// Opt1 - more explicit
+const MyCustomEntity = Entity.withProps({ /* or entity.withProps({ ... */
+    geometry: box({height: 20, width: 50, depth: 20,}),
+    material: color('red'),
+})
+```
 * **world**: The entry point of the VR-world/module.
 A world maps URLs and paths to Scenes. Worlds can be nested.
 ```javascript
@@ -147,3 +181,7 @@ const MyScene = scene(
         
     initialise(MyWorld)
 ```
+
+### What should render?
+
+
