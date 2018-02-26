@@ -19,7 +19,7 @@ such as **markers**, **navigations**, ...
 
 * **world**: The entry point of the VR-world/module.
 A world maps URLs and paths to Scenes. Worlds can be nested.
-```flow js
+```javascript
 import {world} from 'fuvr'
   
 // Type description for world func
@@ -39,7 +39,7 @@ const MyWorld = world(
 * **scene**: A scene describes a scene. It makes use of a declarative API to render 
 components onto itself. It can hold (immutable) state and dispatch actions to make 
 changes (à la redux). 
-```flow js
+```javascript
 import {scene, entity} from 'fuvr'
   
 // Type description for scene func
@@ -77,7 +77,7 @@ const MyScene = scene(
 
 #### Example using proposal
 
-```flow js
+```javascript
     import {world, scene, initialise} from 'fuvr'
     
     const Entity: any = {/*...*/}
